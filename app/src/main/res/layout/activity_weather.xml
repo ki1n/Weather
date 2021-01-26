@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_fon"
+    tools:context=".presentation.weather.WeatherActivity">
+
+    <TextView
+        android:id="@+id/tvCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:hint="Омск"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSweepCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/Сменить_город"
+        style="@style/ConstText"
+        app:layout_constraintEnd_toStartOf="@+id/tvPlace"
+        app:layout_constraintStart_toStartOf="@+id/tvCity"
+        app:layout_constraintTop_toBottomOf="@+id/tvCity" />
+
+    <RadioGroup
+        android:id="@+id/rbChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="21dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/tvPlace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvCity">
+
+        <RadioButton
+            android:id="@+id/radioC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:text="C"
+            android:textColor="@color/radio_flat_text_selector" />
+
+        <RadioButton
+            android:id="@+id/radioF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="F"
+            android:textColor="@color/radio_flat_text_selector" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvPlace"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:drawableStart="@drawable/ic_path_2"
+        android:text="@string/Моё_местоположение"
+        android:drawablePadding="8dp"
+        style="@style/ConstText"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSweepCity"
+        app:layout_constraintEnd_toEndOf="@+id/rbChoice"
+        app:layout_constraintStart_toEndOf="@+id/tvSweepCity"
+        app:layout_constraintTop_toTopOf="@+id/tvSweepCity" />
+
+    <ImageView
+        android:id="@+id/imvWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="96dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvTemperature"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSweepCity"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="46dp"
+        android:gravity="center"
+        android:hint="14"
+        android:textSize="110sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imvWeather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imvWeather"
+        app:layout_constraintTop_toTopOf="@+id/imvWeather"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <TextView
+        android:id="@+id/tмСlimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Дождь"
+        app:layout_constraintEnd_toEndOf="@+id/tvTemperature"
+        app:layout_constraintStart_toStartOf="@+id/imvWeather"
+        app:layout_constraintTop_toBottomOf="@+id/imvWeather" />
+
+    <TextView
+        android:id="@+id/tvWind"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="4dp"
+        android:text="Ветер"
+        style="@style/ConstText"
+        app:layout_constraintEnd_toStartOf="@+id/tvPressure"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvSweepCity"
+        app:layout_constraintTop_toBottomOf="@+id/tмСlimate" />
+
+    <TextView
+        android:id="@+id/tvPressure"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/Давление"
+        style="@style/ConstText"
+        app:layout_constraintEnd_toEndOf="@+id/rbChoice"
+        app:layout_constraintStart_toEndOf="@+id/tvWind"
+        app:layout_constraintTop_toTopOf="@+id/tvWind" />
+
+    <TextView
+        android:id="@+id/tvWindTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:hint="5 м/с, западный"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/tvWind"
+        app:layout_constraintTop_toBottomOf="@+id/tvWind" />
+
+    <TextView
+        android:id="@+id/tvPressureTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:hint="752 мм рт.ст."
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/tvPressure"
+        app:layout_constraintTop_toBottomOf="@+id/tvPressure" />
+
+    <TextView
+        android:id="@+id/tvHumidity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/Влажность"
+        style="@style/ConstText"
+        app:layout_constraintEnd_toStartOf="@+id/tvProbability"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvWind"
+        app:layout_constraintTop_toBottomOf="@+id/tvWindTxt" />
+
+    <TextView
+        android:id="@+id/tvHumidityTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:hint="60%"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/tvHumidity"
+        app:layout_constraintTop_toBottomOf="@+id/tvHumidity" />
+
+    <TextView
+        android:id="@+id/tvProbability"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/Вероятность_дождя"
+        style="@style/ConstText"
+        app:layout_constraintEnd_toEndOf="@+id/rbChoice"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvPressure"
+        app:layout_constraintTop_toTopOf="@+id/tvHumidity" />
+
+    <TextView
+        android:id="@+id/tvProbabilityTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:hint="10%"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/tvProbability"
+        app:layout_constraintTop_toBottomOf="@+id/tvProbability" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

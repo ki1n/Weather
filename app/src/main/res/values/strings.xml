@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="Моё_местоположение">Моё местоположение</string>
+    <string name="Сменить_город">Сменить город</string>
+    <string name="Давление">Давление</string>
+    <string name="Влажность">Влажность</string>
+    <string name="Вероятность_дождя">Вероятность дождя</string>
+</resources>

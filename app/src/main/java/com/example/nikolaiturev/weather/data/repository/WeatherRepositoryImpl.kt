@@ -10,6 +10,7 @@ import io.reactivex.schedulers.Schedulers
 class WeatherRepositoryImpl(
     private val weatherApi: WeatherApi
 ) : WeatherRepository {
+
     override fun get(): Single<BaseWeatherResponse> =
         weatherApi.getWeatherDataByCity()
             .subscribeOn(Schedulers.io())

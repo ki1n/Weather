@@ -9,5 +9,8 @@ class WeatherActivity : BaseActivity() {
 
     private val viewModel by viewModel<WeatherViewModel>()
 
-    override fun iniView() {}
+    override fun iniView() {
+        viewModel.getWeather()
+
+    }
 }

@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface WeatherApi {
 
-    @GET("data/2.5/weather")
+    @GET("/data/2.5/weather")
     fun getWeatherDataByCity(
         @Query("q") city: String = "London",
         @Query("appid") appId: String = "dde75f86d86c159c3e016b9253b0eb03"

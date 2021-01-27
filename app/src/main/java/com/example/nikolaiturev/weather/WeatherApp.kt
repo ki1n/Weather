@@ -1,6 +1,7 @@
 package com.example.nikolaiturev.weather
 
 import android.app.Application
+import com.example.nikolaiturev.weather.di.dataModule
 import com.example.nikolaiturev.weather.di.repositoryModule
 import com.example.nikolaiturev.weather.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -16,6 +17,7 @@ class WeatherApp : Application() {
         startKoin {
             this.modules(
                 listOf(
+                    dataModule,
                     repositoryModule,
                     viewModelModule
                 )

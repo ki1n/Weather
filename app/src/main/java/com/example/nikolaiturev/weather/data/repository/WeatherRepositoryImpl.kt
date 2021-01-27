@@ -14,11 +14,4 @@ class WeatherRepositoryImpl(
         weatherApi.getWeatherDataByCity()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                it.
-            },
-                { throwable ->
-
-
-                })
 }

@@ -6,5 +6,5 @@ data class Weather(
     @SerializedName("main")
     val main: String,
     @SerializedName("icon")
-    val icon: String?
+    val icon: String
 )

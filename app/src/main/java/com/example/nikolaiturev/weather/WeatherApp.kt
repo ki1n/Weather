@@ -16,7 +16,6 @@ class WeatherApp : Application() {
         startKoin {
             this.modules(
                 listOf(
-
                     repositoryModule,
                     viewModelModule
                 )

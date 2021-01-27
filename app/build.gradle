@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+   // id 'com.google.gms.google-services'
 }
 
 android {
@@ -26,6 +27,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "default"
+    productFlavors {
+        prod {
+            dimension "default"
+            buildConfigField 'String', 'API_URL', '"http://api.openweathermap.org/"'
+            buildConfigField 'String', 'API_KEY', '"dde75f86d86c159c3e016b9253b0eb03"'
+        }
+        dev {
+            dimension "default"
+            applicationId "com.example.nikolaiturev.weather.dev"
+            buildConfigField 'String', 'API_URL', '"http://api.openweathermap.org/"'
+            buildConfigField 'String', 'API_KEY', '"dde75f86d86c159c3e016b9253b0eb03"'
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -42,6 +59,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.core:core-ktx:1.3.2'
+  //  implementation 'com.google.code.gson:gson:2.8.5'
 
     //UI
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -51,9 +69,10 @@ dependencies {
     implementation "org.koin:koin-android:2.2.2"
     implementation "org.koin:koin-androidx-viewmodel:2.2.2"
 
-    //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
     //Google jetpack

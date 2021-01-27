@@ -1,5 +1,6 @@
 package com.example.nikolaiturev.weather.di
 
+import com.example.nikolaiturev.weather.BuildConfig
 import com.example.nikolaiturev.weather.data.api.WeatherApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -49,10 +50,10 @@ val dataModule = module {
             .setVersion(1.0)
             .create()
     }
-    // TODO: update api url
+
     single<WeatherApi> {
         Retrofit.Builder()
-            .baseUrl("todo")
+            .baseUrl(BuildConfig.API_URL)
             .addConverterFactory(GsonConverterFactory.create(get()))
             .client(get())
             .build()

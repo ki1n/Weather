@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class BaseWeatherResponse(
         @SerializedName("weather")
-        val weather: List<Weather>,
+        val weather: List<WeatherResponse>,
         @SerializedName("main")
-        val main: Main,
+        val main: MainResponse,
         @SerializedName("wind")
-        val wind: Wind,
+        val wind: WindResponse,
         @SerializedName("name")
         val name: String,
 )

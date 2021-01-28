@@ -32,14 +32,16 @@ android {
     productFlavors {
         prod {
             dimension "default"
-            buildConfigField 'String', 'API_URL', '"http://api.openweathermap.org"'
+            buildConfigField 'String', 'API_URL', '"http://api.openweathermap.org/"'
             buildConfigField 'String', 'API_KEY', '"dde75f86d86c159c3e016b9253b0eb03"'
+            buildConfigField 'String', 'ICON_URL', '"https://openweathermap.org/img/wn/"'
         }
         dev {
             dimension "default"
             applicationId "com.example.nikolaiturev.weather.dev"
-            buildConfigField 'String', 'API_URL', '"http://api.openweathermap.org"'
+            buildConfigField 'String', 'API_URL', '"http://api.openweathermap.org/"'
             buildConfigField 'String', 'API_KEY', '"dde75f86d86c159c3e016b9253b0eb03"'
+            buildConfigField 'String', 'ICON_URL', '"https://openweathermap.org/img/wn/"'
         }
     }
 

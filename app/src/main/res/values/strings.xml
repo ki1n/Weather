@@ -4,5 +4,9 @@
     <string name="Сменить_город">Сменить город</string>
     <string name="Давление">Давление</string>
     <string name="Влажность">Влажность</string>
+    <string name="ms">%1$s м/с</string>
     <string name="Вероятность_дождя">Вероятность дождя</string>
+    <string name="mm.rt.ct">%1$s мм рт.ст.</string>
+    <string name="percent">%1$s%%</string>
+
 </resources>

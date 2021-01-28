@@ -25,10 +25,10 @@ class WeatherActivity : BaseActivity() {
             tvСlimate.text = weatherResponce.weather[0].main
 
             val iconUrl = BuildConfig.ICON_URL + weatherResponce.weather[0].icon + "@2x.png"
-            // TODo: placeholder
+
             Glide.with(imvWeather.context)
                 .load(iconUrl)
-                .error(R.drawable.ic_path_2)
+                .error(R.drawable.ic_error_connect_icon)
                 .into(imvWeather)
 
             tvWindTxt.text = getString(R.string.ms, weatherResponce.wind.speed.toString())

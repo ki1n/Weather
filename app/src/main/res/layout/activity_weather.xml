@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_fon"
+    android:background="@color/background_fon_weather"
     tools:context=".presentation.weather.WeatherActivity">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
-        android:hint="Омск"
+        android:text="@string/Омск"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="normal"
@@ -51,21 +51,21 @@
             android:id="@+id/radioC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/radio_flat_selector"
+            android:background="@drawable/radio_button_left_selector"
             android:button="@android:color/transparent"
             android:checked="true"
             android:gravity="center"
-            android:text="C"
+            android:text="@string/c"
             android:textColor="@color/radio_flat_text_selector" />
 
         <RadioButton
             android:id="@+id/radioF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/radio_flat_selector"
+            android:background="@drawable/radio_button_right_selector"
             android:button="@android:color/transparent"
             android:gravity="center"
-            android:text="F"
+            android:text="@string/f"
             android:textColor="@color/radio_flat_text_selector" />
 
     </RadioGroup>
@@ -103,7 +103,8 @@
         android:layout_height="150dp"
         android:layout_marginEnd="46dp"
         android:gravity="center"
-        android:hint="14"
+        android:text="14"
+        android:textColor="@color/white"
         android:textSize="110sp"
         app:layout_constraintBottom_toBottomOf="@+id/imvWeather"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,6 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:padding="4dp"
+        android:textColor="@color/white"
         android:text="Дождь"
         app:layout_constraintEnd_toEndOf="@+id/tvTemperature"
         app:layout_constraintStart_toStartOf="@+id/imvWeather"
@@ -154,8 +156,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:hint="5 м/с, западный"
-        android:textSize="18sp"
+        style="@style/WeatherTextWhite18sp"
+        android:text="@string/hint_5mc"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/tvWind"
         app:layout_constraintTop_toBottomOf="@+id/tvWind" />
@@ -165,8 +167,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:hint="752 мм рт.ст."
-        android:textSize="18sp"
+        style="@style/WeatherTextWhite18sp"
+        android:text="@string/hint_mm_rt_st"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/tvPressure"
         app:layout_constraintTop_toBottomOf="@+id/tvPressure" />
@@ -187,11 +189,11 @@
 
     <TextView
         android:id="@+id/tvHumidityTxt"
+        style="@style/WeatherTextWhite18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:hint="60%"
-        android:textSize="18sp"
+        android:text="@string/moisture_percentage_count"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/tvHumidity"
         app:layout_constraintTop_toBottomOf="@+id/tvHumidity" />
@@ -211,24 +213,25 @@
 
     <TextView
         android:id="@+id/tvProbabilityTxt"
+        style="@style/WeatherTextWhite18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:hint="10%"
-        android:textSize="18sp"
+        android:text="@string/probability_count"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/tvProbability"
         app:layout_constraintTop_toBottomOf="@+id/tvProbability" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/rbChoice"
         app:layout_constraintEnd_toStartOf="@+id/rbChoice"
         app:layout_constraintTop_toTopOf="@+id/rbChoice"
-        app:srcCompat="@drawable/ic_degree" />
+        app:srcCompat="@drawable/ic_degree"
+        tools:ignore="VectorDrawableCompat" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

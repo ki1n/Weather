@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#4CAF50</color>
     <color name="background_fon_weather">#7290B9</color>
     <color name="white_alpha_40">#66FFFFFF</color>
     <color name="white_alpha_60">#33FFFFFF</color>

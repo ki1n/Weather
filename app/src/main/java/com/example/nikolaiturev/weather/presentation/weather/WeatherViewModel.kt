@@ -1,7 +1,7 @@
 package com.example.nikolaiturev.weather.presentation.weather
 
 import androidx.lifecycle.MutableLiveData
-import com.example.nikolaiturev.weather.data.api.response.BaseWeatherResponse
+import com.example.nikolaiturev.weather.domain.entity.Weather
 import com.example.nikolaiturev.weather.domain.repository.FahrenheitTemperatureRepositoryImpl
 import com.example.nikolaiturev.weather.domain.repository.WeatherRepository
 import com.example.nikolaiturev.weather.presentation.base.BaseViewModel
@@ -11,7 +11,7 @@ class WeatherViewModel(
     private val fahrenheitTemperatureRepositoryImpl: FahrenheitTemperatureRepositoryImpl
 ) : BaseViewModel() {
 
-    val weatherLiveData = MutableLiveData<BaseWeatherResponse>()
+    val weatherLiveData = MutableLiveData<Weather>()
 
     fun translateCelsius(value: String): Int {
         return fahrenheitTemperatureRepositoryImpl.translateCelsius(value)
@@ -21,9 +21,9 @@ class WeatherViewModel(
         return fahrenheitTemperatureRepositoryImpl.translateFahrenheit(value)
     }
 
-    fun getWeather() {
+    fun getWeather(city: String) {
         disposable {
-            weatherRepository.get()
+            weatherRepository.get(city)
                 .subscribe(
                     {
                         weatherLiveData.value = it

@@ -2,6 +2,7 @@ package com.example.nikolaiturev.weather
 
 import android.app.Application
 import com.example.nikolaiturev.weather.di.dataModule
+import com.example.nikolaiturev.weather.di.mapperModule
 import com.example.nikolaiturev.weather.di.repositoryModule
 import com.example.nikolaiturev.weather.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -19,7 +20,8 @@ class WeatherApp : Application() {
                 listOf(
                     dataModule,
                     repositoryModule,
-                    viewModelModule
+                    viewModelModule,
+                    mapperModule
                 )
             )
             this.androidContext(this@WeatherApp)

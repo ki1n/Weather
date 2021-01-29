@@ -10,7 +10,7 @@ interface WeatherApi {
 
     @GET("/data/2.5/weather")
     fun getWeatherDataByCity(
-        @Query("q") city: String = "London",
+        @Query("q") city: String = "",
         @Query("appid") appId: String = BuildConfig.API_KEY
     ): Single<BaseWeatherResponse>
 }

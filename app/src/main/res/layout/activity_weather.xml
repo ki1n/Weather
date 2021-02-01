@@ -119,8 +119,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:padding="4dp"
-        android:textColor="@color/white"
         android:text="Дождь"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/tvTemperature"
         app:layout_constraintStart_toStartOf="@+id/imvWeather"
         app:layout_constraintTop_toBottomOf="@+id/imvWeather" />
@@ -153,10 +153,10 @@
 
     <TextView
         android:id="@+id/tvWindTxt"
+        style="@style/WeatherTextWhite18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        style="@style/WeatherTextWhite18sp"
         android:text="@string/hint_5mc"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/tvWind"
@@ -164,10 +164,10 @@
 
     <TextView
         android:id="@+id/tvPressureTxt"
+        style="@style/WeatherTextWhite18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        style="@style/WeatherTextWhite18sp"
         android:text="@string/hint_mm_rt_st"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/tvPressure"
@@ -232,5 +232,14 @@
         app:layout_constraintTop_toTopOf="@+id/rbChoice"
         app:srcCompat="@drawable/ic_degree"
         tools:ignore="VectorDrawableCompat" />
+
+    <ProgressBar
+        android:id="@+id/progressBarWeather"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

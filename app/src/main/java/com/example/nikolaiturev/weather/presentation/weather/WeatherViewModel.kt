@@ -24,6 +24,8 @@ class WeatherViewModel(
     fun getWeather(city: String) {
         disposable {
             weatherRepository.get(city)
+                .doOnSubscribe { isInProgress.value = true }
+                .doFinally { isInProgress.value = false }
                 .subscribe(
                     {
                         weatherLiveData.value = it

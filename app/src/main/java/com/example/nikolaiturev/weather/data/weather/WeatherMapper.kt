@@ -9,8 +9,8 @@ class WeatherMapper : Mapper<BaseWeatherResponse, Weather> {
         return Weather(
             name = value.name,
             icon = value.weather[0].icon,
-            tempC = value.main.temp - 273,
-            description = value.weather[0].main,
+            tempС = value.main.temp - 273,
+            description = value.weather[0].description,
             speed = value.wind.speed,
             pressure = value.main.pressure,
             humidity = value.main.humidity

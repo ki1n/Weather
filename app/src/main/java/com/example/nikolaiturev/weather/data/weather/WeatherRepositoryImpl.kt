@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers
 
 class WeatherRepositoryImpl(
     private val weatherApi: WeatherApi,
-    private val weatherMapper: WeatherMapper,
+    private val weatherMapper: WeatherMapper
 ) : WeatherRepository {
 
     override fun get(city: String): Single<Weather> =

@@ -5,4 +5,5 @@ interface FahrenheitTemperatureRepository {
     fun translateCelsius(value: String) : Int
 
     fun translateFahrenheit(value: String) : Int
+
 }

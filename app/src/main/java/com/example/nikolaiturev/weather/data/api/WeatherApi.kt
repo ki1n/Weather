@@ -11,6 +11,16 @@ interface WeatherApi {
     @GET("/data/2.5/weather")
     fun getWeatherDataByCity(
         @Query("q") city: String = "",
-        @Query("appid") appId: String = BuildConfig.API_KEY
+        @Query("appid") appId: String = BuildConfig.API_KEY,
+        @Query("lang") lang: String = "ru"
     ): Single<BaseWeatherResponse>
+
+    @GET("/data/2.5/weather")
+    fun getWeatherDataByGeolocation(
+        @Query("lat") lat: Double,
+        @Query("lon") lon: Double,
+        @Query("appid") appId: String = BuildConfig.API_KEY,
+        @Query("lang") lang: String = "ru"
+    ): Single<BaseWeatherResponse>
+
 }

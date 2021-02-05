@@ -1,6 +1,6 @@
 package com.example.nikolaiturev.weather.domain.entity
 
-data class Weather(
+class WeatherGeo (
     val name: String,
     val icon: String,
     val tempС: Float,
@@ -8,4 +8,4 @@ data class Weather(
     val speed: Float,
     val pressure: Int,
     val humidity: Int,
-)
+        )

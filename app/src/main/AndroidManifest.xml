@@ -18,13 +18,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Weather"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.weather.WeatherActivity">
+        <activity android:name=".presentation.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".presentation.weather.WeatherActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

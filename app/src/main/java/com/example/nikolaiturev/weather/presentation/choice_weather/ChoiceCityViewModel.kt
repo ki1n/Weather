@@ -11,7 +11,7 @@ class ChoiceCityViewModel : BaseViewModel() {
     val listCityFilter = MutableLiveData<String>()
 
     private val arraysCity =
-        arrayListOf("Omsk", "Moscow", "Petersburg", "Samara", "Sochi", "Berlin", "Paris", "London")
+        arrayListOf("Омск", "Москва", "Петербург", "Самара", "Сочи", "Берлин", "Париж", "Лондон")
 
     val nameFilterCity by lazy {
         FilterListMediatorLiveData(listCity, listCityFilter) { item, filter ->

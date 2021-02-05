@@ -9,4 +9,5 @@ class FahrenheitTemperatureRepositoryImpl : FahrenheitTemperatureRepository {
     override fun translateFahrenheit(value: String): Int {
         return Math.round((value.toInt() * 1.8) + 32).toInt()
     }
+
 }

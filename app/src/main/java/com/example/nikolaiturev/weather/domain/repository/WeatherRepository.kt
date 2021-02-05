@@ -5,6 +5,6 @@ import io.reactivex.Single
 
 interface WeatherRepository {
 
-    fun get(city: String) : Single<Weather>
+    fun get(city: String): Single<Weather>
 
 }

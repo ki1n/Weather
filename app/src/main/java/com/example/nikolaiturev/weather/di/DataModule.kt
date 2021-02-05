@@ -26,7 +26,7 @@ val dataModule = module {
                 .newBuilder()
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
-                /*.addHeader("Platform", "android")*/
+            /*.addHeader("Platform", "android")*/
 //            androidContext().userPreference.authToken.let {
 //                if (it.isNotEmpty()) {
 //                    builder.addHeader("Authorization", it)
@@ -36,7 +36,7 @@ val dataModule = module {
         }
 
         OkHttpClient.Builder()
-            //.addInterceptor(headerInterceptor)
+           // .addInterceptor(headerInterceptor)
             .addInterceptor(logsInterceptor)
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
@@ -61,5 +61,5 @@ val dataModule = module {
             .build()
             .create(WeatherApi::class.java)
     }
-
 }
+

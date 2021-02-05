@@ -17,5 +17,6 @@
     <string name="probability_count">10%</string>
     <string name="f">F</string>
     <string name="c">C</string>
+    <string name="SearchCity">Поиск города</string>
 
 </resources>

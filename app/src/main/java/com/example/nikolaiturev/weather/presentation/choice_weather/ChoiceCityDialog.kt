@@ -4,19 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolaiturev.weather.R
-import com.example.nikolaiturev.weather.presentation.choice_weather.adapter.ChoiceWeatherAdapter
+import com.example.nikolaiturev.weather.presentation.choice_weather.adapter.ChoiceCityAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_choice_weather.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ChoiceWeatherDialog : BottomSheetDialogFragment() {
+class ChoiceCityDialog(var onResult: ((String) -> Unit)? = null) : BottomSheetDialogFragment() {
 
-    private val choiceWeatherAdapter: ChoiceWeatherAdapter by inject()
+    private val choiceWeatherAdapter: ChoiceCityAdapter by inject()
 
-    private val viewModel by viewModel<ChoiceWeatherViewModel>()
+    private val viewModel by viewModel<ChoiceCityViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.Theme_FullScreenDialog)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,22 +38,28 @@ class ChoiceWeatherDialog : BottomSheetDialogFragment() {
 
         viewModel.getCity()
 
-        viewModel.listLocation.observe(viewLifecycleOwner, { list ->
+        edSearchCity.doOnTextChanged { text, _, _, _ ->
+            viewModel.listCityFilter.value = text.toString().toLowerCase()
+        }
+
+        viewModel.listCity.observe(viewLifecycleOwner, { list ->
             choiceWeatherAdapter.updateCityWeather(list ?: emptyList())
         })
-
-        bottomSheet.setOnClickListener {
-            dialog?.dismiss()
-        }
-
-        btSearch.setOnClickListener {
-
-        }
+        viewModel.nameFilterCity.observe(viewLifecycleOwner, { list ->
+            list.let {
+                choiceWeatherAdapter.updateCityWeather(list ?: emptyList())
+            }
+        })
     }
 
     private fun initAdapter() {
         list_city.adapter = choiceWeatherAdapter
         list_city.layoutManager = LinearLayoutManager(requireContext())
+
+        choiceWeatherAdapter.onClick = {
+            onResult?.invoke(it)
+            dismiss()
+        }
     }
 
 }

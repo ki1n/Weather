@@ -14,7 +14,6 @@ class SplashActivity : BaseActivity() {
     override fun iniView() {
         Handler().postDelayed(
             {
-
                 val intent = Intent(this, WeatherActivity::class.java)
                 startActivity(intent)
             }, 3000

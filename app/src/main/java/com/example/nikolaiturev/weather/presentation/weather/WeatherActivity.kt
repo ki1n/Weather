@@ -14,12 +14,12 @@ import com.bumptech.glide.Glide
 import com.example.nikolaiturev.weather.BuildConfig
 import com.example.nikolaiturev.weather.R
 import com.example.nikolaiturev.weather.exstension.click
-import com.example.nikolaiturev.weather.exstension.show
 import com.example.nikolaiturev.weather.presentation.base.BaseActivity
 import com.example.nikolaiturev.weather.presentation.choice_weather.ChoiceCityDialog
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_weather.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.math.roundToInt
 
 class WeatherActivity : BaseActivity() {
     private val TAG = "WeatherActivity"
@@ -33,6 +33,7 @@ class WeatherActivity : BaseActivity() {
 
     @SuppressLint("MissingPermission")
     override fun iniView() {
+        bindingViewModel()
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         tvGeolocation.setOnClickListener {
@@ -51,26 +52,7 @@ class WeatherActivity : BaseActivity() {
             with(weatherGeo) {
                 tvTemperature.text = getString(
                     R.string.temperatureCelsius,
-                    Math.round(kotlin.String.format("%.1f", tempС).toFloat()).toString()
-                )
-                tvCity.text = name
-                tvСlimate.text = description
-                tvWindTxt.text = getString(R.string.ms, speed.toString())
-                tvPressureTxt.text = getString(R.string.mm_rt_ct, pressure.toString())
-                tvHumidityTxt.text = getString(R.string.percent, humidity.toString())
-
-                com.bumptech.glide.Glide.with(imvWeather.context)
-                    .load(BuildConfig.ICON_URL + icon + "@2x.png")
-                    .error(R.drawable.ic_error_connect_icon)
-                    .into(imvWeather)
-            }
-        })
-
-        viewModel.weatherLiveData.observe(this, { weather ->
-            with(weather) {
-                tvTemperature.text = getString(
-                    R.string.temperatureCelsius,
-                    Math.round(String.format("%.1f", tempС).toFloat()).toString()
+                    kotlin.String.format("%.1f", tempС).toFloat().roundToInt().toString()
                 )
                 tvCity.text = name
                 tvСlimate.text = description
@@ -85,8 +67,23 @@ class WeatherActivity : BaseActivity() {
             }
         })
 
-        viewModel.isInProgress.observe(this, {
-            progressBarWeather.show(it)
+        viewModel.weatherLiveData.observe(this, { weather ->
+            with(weather) {
+                tvTemperature.text = getString(
+                    R.string.temperatureCelsius,
+                    String.format("%.1f", tempС).toFloat().roundToInt().toString()
+                )
+                tvCity.text = name
+                tvСlimate.text = description
+                tvWindTxt.text = getString(R.string.ms, speed.toString())
+                tvPressureTxt.text = getString(R.string.mm_rt_ct, pressure.toString())
+                tvHumidityTxt.text = getString(R.string.percent, humidity.toString())
+
+                Glide.with(imvWeather.context)
+                    .load(BuildConfig.ICON_URL + icon + "@2x.png")
+                    .error(R.drawable.ic_error_connect_icon)
+                    .into(imvWeather)
+            }
         })
 
         rbChoice.setOnCheckedChangeListener { _, checkedId ->
@@ -205,6 +202,16 @@ class WeatherActivity : BaseActivity() {
                 Log.d(TAG, "You have the Permission")
             }
         }
+    }
+
+    private fun bindingViewModel() {
+        viewModel.isInProgress.observe(this, { isInProgress ->
+            if (isInProgress) {
+                showProgressDialog()
+            } else {
+                hideProgressDialog()
+            }
+        })
     }
 
 }

@@ -17,6 +17,7 @@
         android:text="@string/Омск"
         android:textColor="@color/white"
         android:textSize="30sp"
+        android:fontFamily="@font/lato_regular"
         android:textStyle="normal"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.0"
@@ -55,6 +56,7 @@
             android:button="@android:color/transparent"
             android:checked="true"
             android:gravity="center"
+            android:fontFamily="@font/lato_bold"
             android:text="@string/c"
             android:textColor="@color/radio_flat_text_selector" />
 
@@ -65,6 +67,7 @@
             android:background="@drawable/radio_button_right_selector"
             android:button="@android:color/transparent"
             android:gravity="center"
+            android:fontFamily="@font/lato_bold"
             android:text="@string/f"
             android:textColor="@color/radio_flat_text_selector" />
 
@@ -104,6 +107,7 @@
         android:layout_marginEnd="46dp"
         android:gravity="center"
         android:text="14"
+        android:fontFamily="@font/ptsans_regular"
         android:textColor="@color/white"
         android:textSize="110sp"
         app:layout_constraintBottom_toBottomOf="@+id/imvWeather"
@@ -120,8 +124,9 @@
         android:layout_marginTop="8dp"
         android:padding="4dp"
         android:textStyle="normal"
-        style="@style/WeatherTextWhite18sp"
+        android:fontFamily="@font/lato_light_90"
         android:text="Дождь"
+        android:textSize="25sp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/tvTemperature"
         app:layout_constraintStart_toStartOf="@+id/imvWeather"

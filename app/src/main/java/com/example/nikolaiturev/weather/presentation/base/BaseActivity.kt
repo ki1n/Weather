@@ -23,15 +23,15 @@ abstract class BaseActivity : AppCompatActivity() {
         iniView()
     }
 
-    fun showProgressDialog(){
+    fun showProgressDialog() {
         progressDialog.show()
     }
 
-    fun hideProgressDialog(){
+    fun hideProgressDialog() {
         progressDialog.dismiss()
     }
 
-    private fun progressDialog(){
+    private fun progressDialog() {
         progressDialog = Dialog(this)
         val inflate = LayoutInflater.from(this).inflate(R.layout.layout_progress, null)
         progressDialog.setContentView(inflate)

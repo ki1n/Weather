@@ -1,4 +1,4 @@
-package com.example.nikolaiturev.weather.presentation.choice_weather
+package com.example.nikolaiturev.weather.presentation.choice_city
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolaiturev.weather.R
-import com.example.nikolaiturev.weather.presentation.choice_weather.adapter.ChoiceCityAdapter
+import com.example.nikolaiturev.weather.presentation.choice_city.adapter.ChoiceCityAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.fragment_choice_weather.*
+import kotlinx.android.synthetic.main.fragment_choice_city.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,14 +29,12 @@ class ChoiceCityDialog(var onResult: ((String) -> Unit)? = null) : BottomSheetDi
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_choice_weather, container, false)
+        return inflater.inflate(R.layout.fragment_choice_city, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-
-        viewModel.getCity()
 
         edSearchCity.doOnTextChanged { text, _, _, _ ->
             viewModel.listCityFilter.value = text.toString().toLowerCase()
@@ -61,5 +59,4 @@ class ChoiceCityDialog(var onResult: ((String) -> Unit)? = null) : BottomSheetDi
             dismiss()
         }
     }
-
 }

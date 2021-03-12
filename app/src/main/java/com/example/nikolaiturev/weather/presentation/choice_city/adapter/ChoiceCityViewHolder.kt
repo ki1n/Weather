@@ -1,4 +1,4 @@
-package com.example.nikolaiturev.weather.presentation.choice_weather.adapter
+package com.example.nikolaiturev.weather.presentation.choice_city.adapter
 
 import android.view.View
 import android.widget.ImageView

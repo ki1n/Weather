@@ -1,6 +1,5 @@
 package com.example.nikolaiturev.weather.presentation.weather
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.nikolaiturev.weather.domain.entity.Weather
 import com.example.nikolaiturev.weather.domain.entity.WeatherGeo
@@ -34,7 +33,6 @@ class WeatherViewModel(
                 .subscribe(
                     {
                         weatherGeoLiveData.value = it
-                        Log.e("TAG", "getGeolocationCity:  ${it.description}")
                     },
                     {
                         postMessage(it.localizedMessage)

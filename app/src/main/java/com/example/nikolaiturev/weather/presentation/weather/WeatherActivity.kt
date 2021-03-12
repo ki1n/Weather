@@ -15,7 +15,7 @@ import com.example.nikolaiturev.weather.BuildConfig
 import com.example.nikolaiturev.weather.R
 import com.example.nikolaiturev.weather.exstension.click
 import com.example.nikolaiturev.weather.presentation.base.BaseActivity
-import com.example.nikolaiturev.weather.presentation.choice_weather.ChoiceCityDialog
+import com.example.nikolaiturev.weather.presentation.choice_city.ChoiceCityDialog
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_weather.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -52,7 +52,7 @@ class WeatherActivity : BaseActivity() {
             with(weatherGeo) {
                 tvTemperature.text = getString(
                     R.string.temperatureCelsius,
-                    kotlin.String.format("%.1f", tempС).toFloat().roundToInt().toString()
+                    String.format("%.1f", tempС).toFloat().roundToInt().toString()
                 )
                 tvCity.text = name
                 tvСlimate.text = description
@@ -137,6 +137,7 @@ class WeatherActivity : BaseActivity() {
         }
     }
 
+
     @SuppressLint("MissingPermission")
     private fun newLocationData() {
         val locationRequest = LocationRequest()
@@ -174,8 +175,7 @@ class WeatherActivity : BaseActivity() {
     }
 
     private fun requestPermission() {
-        ActivityCompat.requestPermissions(
-            this,
+        ActivityCompat.requestPermissions(this,
             arrayOf(
                 android.Manifest.permission.ACCESS_COARSE_LOCATION,
                 android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -213,7 +213,6 @@ class WeatherActivity : BaseActivity() {
             }
         })
     }
-
 }
 
 

@@ -2,6 +2,7 @@ package com.example.nikolaiturev.weather.di
 
 import com.example.nikolaiturev.weather.BuildConfig
 import com.example.nikolaiturev.weather.data.api.WeatherApi
+import com.example.nikolaiturev.weather.data.permissions.AndroidPermissionsService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import io.reactivex.schedulers.Schedulers
@@ -45,5 +46,8 @@ val dataModule = module {
             .build()
             .create(WeatherApi::class.java)
     }
+
+    single { AndroidPermissionsService() }
+
 }
 

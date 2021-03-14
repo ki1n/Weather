@@ -2,19 +2,19 @@ package com.example.nikolaiturev.weather.presentation.weather
 
 import androidx.lifecycle.MutableLiveData
 import com.example.nikolaiturev.weather.domain.entity.Weather
-import com.example.nikolaiturev.weather.domain.entity.WeatherGeo
-import com.example.nikolaiturev.weather.domain.repository.FahrenheitTemperatureRepository
-import com.example.nikolaiturev.weather.domain.repository.WeatherGeoRepository
+import com.example.nikolaiturev.weather.domain.entity.WeatherGeolocation
+import com.example.nikolaiturev.weather.domain.repository.WeatherGeolocationRepository
 import com.example.nikolaiturev.weather.domain.repository.WeatherRepository
+import com.example.nikolaiturev.weather.domain.service.FahrenheitTemperatureService
 import com.example.nikolaiturev.weather.presentation.base.BaseViewModel
 
 class WeatherViewModel(
     private val weatherRepository: WeatherRepository,
-    private val fahrenheitTemperatureRepository: FahrenheitTemperatureRepository,
-    private val weatherGeoRepository: WeatherGeoRepository
+    private val fahrenheitTemperatureRepository: FahrenheitTemperatureService,
+    private val weatherGeolocationRepository: WeatherGeolocationRepository,
 ) : BaseViewModel() {
 
-    val weatherGeoLiveData = MutableLiveData<WeatherGeo>()
+    val weatherGeoLiveData = MutableLiveData<WeatherGeolocation>()
     val weatherLiveData = MutableLiveData<Weather>()
 
     fun translateCelsius(value: String): Int {
@@ -25,9 +25,9 @@ class WeatherViewModel(
         return fahrenheitTemperatureRepository.translateFahrenheit(value)
     }
 
-    fun getGeolocationCity(lat: Double, lon: Double) {
+    fun getGeolocationCity() {
         disposable {
-            weatherGeoRepository.getGeolocation(lat, lon)
+            weatherGeolocationRepository.get()
                 .doOnSubscribe { isInProgress.value = true }
                 .doFinally { isInProgress.value = false }
                 .subscribe(

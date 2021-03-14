@@ -1,18 +1,18 @@
 package com.example.nikolaiturev.weather.presentation.choice_city
 
 import androidx.lifecycle.MutableLiveData
+import com.example.nikolaiturev.weather.domain.repository.CityRepository
 import com.example.nikolaiturev.weather.presentation.base.BaseViewModel
 import com.example.nikolaiturev.weather.presentation.base.FilterListMediatorLiveData
 import java.util.*
 
-class ChoiceCityViewModel : BaseViewModel() {
+class ChoiceCityViewModel(cityRepository: CityRepository) : BaseViewModel() {
 
     val listCity = MutableLiveData<List<String>>()
 
     val listCityFilter = MutableLiveData<String>()
 
-    private val arraysCity =
-        arrayListOf("Омск", "Москва", "Петербург", "Самара", "Сочи", "Берлин", "Париж", "Лондон")
+    private val arrayCity = cityRepository.getCity()
 
     init {
         getCity()
@@ -29,6 +29,6 @@ class ChoiceCityViewModel : BaseViewModel() {
     }
 
     private fun getCity() {
-        listCity.value = arraysCity
+        listCity.value = arrayCity
     }
 }

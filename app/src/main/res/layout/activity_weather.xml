@@ -56,6 +56,7 @@
             android:button="@android:color/transparent"
             android:checked="true"
             android:gravity="center"
+            android:textSize="22sp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/c"
             android:textColor="@color/radio_flat_text_selector" />
@@ -67,6 +68,7 @@
             android:background="@drawable/radio_button_right_selector"
             android:button="@android:color/transparent"
             android:gravity="center"
+            android:textSize="22sp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/f"
             android:textColor="@color/radio_flat_text_selector" />
@@ -224,7 +226,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="@string/probability_count"
+        android:text="не известно "
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/tvProbability"
         app:layout_constraintTop_toBottomOf="@+id/tvProbability" />

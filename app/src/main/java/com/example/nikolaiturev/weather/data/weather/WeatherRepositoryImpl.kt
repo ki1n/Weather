@@ -14,9 +14,7 @@ class WeatherRepositoryImpl(
 
     override fun get(city: String): Single<Weather> =
         weatherApi.getWeatherDataByCity(city)
-            .map {
-                weatherMapper.transform(it)
-            }
+            .map { weatherMapper.transform(it) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 }

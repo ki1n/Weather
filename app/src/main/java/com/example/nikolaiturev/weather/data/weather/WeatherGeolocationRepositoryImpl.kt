@@ -16,8 +16,8 @@ class WeatherGeolocationRepositoryImpl(
 
     override fun get(): Single<WeatherGeolocation> =
         locationService.getLastKnownLocation()
-            .flatMap { city ->
-                weatherApi.getWeatherDataByGeolocation(city.latitude, city.longitude)
+            .flatMap { location ->
+                weatherApi.getWeatherDataByGeolocation(location.latitude, location.longitude)
                     .map { weatherGeoMapper.transform(it) }
             }
             .subscribeOn(Schedulers.io())

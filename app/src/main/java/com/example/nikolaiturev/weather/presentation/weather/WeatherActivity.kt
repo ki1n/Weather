@@ -9,6 +9,7 @@ import com.example.nikolaiturev.weather.exstension.setOnDebouncedClickListener
 import com.example.nikolaiturev.weather.presentation.base.BaseActivity
 import com.example.nikolaiturev.weather.presentation.choice_city.ChoiceCityDialog
 import kotlinx.android.synthetic.main.activity_weather.*
+import kotlinx.android.synthetic.main.activity_weather.view.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.roundToInt
@@ -25,7 +26,9 @@ class WeatherActivity : BaseActivity() {
         androidPermissionsService.init(this)
 
         tvGeolocation.setOnDebouncedClickListener {
+
             viewModel.getPermissionGeolocation()
+            rbChoice.radioC.isChecked = true
         }
 
         viewModel.getWeather("Moscow")
@@ -94,6 +97,7 @@ class WeatherActivity : BaseActivity() {
         ChoiceCityDialog(
             onResult = {
                 viewModel.getWeather(it)
+                rbChoice.radioC.isChecked = true
             }
         ).show(supportFragmentManager, null)
     }

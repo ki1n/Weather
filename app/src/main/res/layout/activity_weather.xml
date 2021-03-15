@@ -55,11 +55,11 @@
             android:background="@drawable/radio_button_left_selector"
             android:button="@android:color/transparent"
             android:checked="true"
-            android:gravity="center"
-            android:textSize="22sp"
             android:fontFamily="@font/lato_bold"
+            android:gravity="center"
             android:text="@string/c"
-            android:textColor="@color/radio_flat_text_selector" />
+            android:textColor="@color/radio_flat_text_selector"
+            android:textSize="22sp" />
 
         <RadioButton
             android:id="@+id/radioF"

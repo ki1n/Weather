@@ -1,14 +1,14 @@
 package com.example.nikolaiturev.weather.presentation.choice_city.adapter
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.example.nikolaiturev.weather.R
+import com.example.nikolaiturev.weather.domain.entity.City
 import com.example.nikolaiturev.weather.exstension.click
 import com.example.nikolaiturev.weather.exstension.inflate
 
-class ChoiceCityAdapter : RecyclerView.Adapter<ChoiceCityViewHolder>() {
-
-    private var listCity: List<String> = arrayListOf()
+class ChoiceCityAdapter : ListAdapter<City, ChoiceCityViewHolder>(ExerciseDiffCallback()) {
 
     lateinit var onClick: (String) -> Unit
 
@@ -17,21 +17,22 @@ class ChoiceCityAdapter : RecyclerView.Adapter<ChoiceCityViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ChoiceCityViewHolder, position: Int) {
-        val item = listCity[position]
+        val item = currentList[position]
         with(holder) {
-            setData(item)
+            setData(item.name)
             itemView.click {
-                onClick.invoke(item)
+                onClick.invoke(item.name)
             }
         }
     }
 
-    override fun getItemCount(): Int {
-        return listCity.size
-    }
+    class ExerciseDiffCallback : DiffUtil.ItemCallback<City>() {
+        override fun areItemsTheSame(oldItem: City, newItem: City): Boolean {
+            return oldItem.name == newItem.name
+        }
 
-    fun updateCityWeather(list: List<String>) {
-        listCity = list
-        notifyDataSetChanged()
+        override fun areContentsTheSame(oldItem: City, newItem: City): Boolean {
+            return oldItem == newItem
+        }
     }
 }

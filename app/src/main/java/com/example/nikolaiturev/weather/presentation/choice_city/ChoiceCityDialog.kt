@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolaiturev.weather.R
+import com.example.nikolaiturev.weather.domain.entity.City
 import com.example.nikolaiturev.weather.presentation.choice_city.adapter.ChoiceCityAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_choice_city.*
@@ -37,15 +38,15 @@ class ChoiceCityDialog(var onResult: ((String) -> Unit)? = null) : BottomSheetDi
         initAdapter()
 
         edSearchCity.doOnTextChanged { text, _, _, _ ->
-            viewModel.listCityFilter.value = text.toString().toLowerCase()
+            viewModel.listCityFilter.value = City(text.toString().toLowerCase())
         }
 
         viewModel.listCity.observe(viewLifecycleOwner, { list ->
-            choiceWeatherAdapter.updateCityWeather(list ?: emptyList())
+            choiceWeatherAdapter.submitList(list ?: emptyList())
         })
         viewModel.nameFilterCity.observe(viewLifecycleOwner, { list ->
             list.let {
-                choiceWeatherAdapter.updateCityWeather(list ?: emptyList())
+                choiceWeatherAdapter.submitList(list ?: emptyList())
             }
         })
     }

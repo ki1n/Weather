@@ -7,7 +7,6 @@ import com.example.nikolaiturev.weather.domain.entity.WeatherGeolocation
 import com.example.nikolaiturev.weather.domain.repository.WeatherGeolocationRepository
 import com.example.nikolaiturev.weather.domain.repository.WeatherRepository
 import com.example.nikolaiturev.weather.domain.service.FahrenheitTemperatureService
-import com.example.nikolaiturev.weather.domain.service.LocationService
 import com.example.nikolaiturev.weather.presentation.base.BaseViewModel
 import com.example.nikolaiturev.weather.util.Const
 
@@ -15,7 +14,6 @@ class WeatherViewModel(
     private val weatherRepository: WeatherRepository,
     private val fahrenheitTemperatureRepository: FahrenheitTemperatureService,
     private val weatherGeolocationRepository: WeatherGeolocationRepository,
-    private val locationService: LocationService,
     private val androidPermissionsService: AndroidPermissionsService
 ) : BaseViewModel() {
 
@@ -30,7 +28,7 @@ class WeatherViewModel(
         return fahrenheitTemperatureRepository.translateFahrenheit(value)
     }
 
-    fun getGeolocationCity() {
+    private fun getGeolocationCity() {
         disposable {
             weatherGeolocationRepository.get()
                 .doOnSubscribe { isInProgress.value = true }
@@ -62,7 +60,7 @@ class WeatherViewModel(
         }
     }
 
-    fun permissionGeolocation() {
+    fun getPermissionGeolocation() {
         androidPermissionsService.requestPermissions(
             requestCode = Const.PERMISSIONS_REQUEST_CODE_LOCATION,
             permissions = listOf(

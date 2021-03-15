@@ -25,7 +25,7 @@ class WeatherActivity : BaseActivity() {
         androidPermissionsService.init(this)
 
         tvGeolocation.setOnDebouncedClickListener {
-            viewModel.permissionGeolocation()
+            viewModel.getPermissionGeolocation()
         }
 
         viewModel.getWeather("Moscow")

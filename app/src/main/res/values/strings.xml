@@ -19,5 +19,8 @@
     <string name="f">F</string>
     <string name="c">C</string>
     <string name="SearchCity">Поиск города</string>
+    <string name="дождь">Дождь</string>
+    <string name="ветер">Ветер</string>
+    <string name="нет_данных">нет данных</string>
 
 </resources>

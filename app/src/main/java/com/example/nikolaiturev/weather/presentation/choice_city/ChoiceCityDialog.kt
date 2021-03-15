@@ -20,6 +20,10 @@ class ChoiceCityDialog(var onResult: ((String) -> Unit)? = null) : BottomSheetDi
 
     private val viewModel by viewModel<ChoiceCityViewModel>()
 
+    override fun getTheme(): Int {
+        return super.getTheme()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.Theme_FullScreenDialog)

@@ -4,7 +4,6 @@ import com.bumptech.glide.Glide
 import com.example.nikolaiturev.weather.BuildConfig
 import com.example.nikolaiturev.weather.R
 import com.example.nikolaiturev.weather.data.permissions.AndroidPermissionsService
-import com.example.nikolaiturev.weather.exstension.click
 import com.example.nikolaiturev.weather.exstension.setOnDebouncedClickListener
 import com.example.nikolaiturev.weather.presentation.base.BaseActivity
 import com.example.nikolaiturev.weather.presentation.choice_city.ChoiceCityDialog
@@ -26,7 +25,6 @@ class WeatherActivity : BaseActivity() {
         androidPermissionsService.init(this)
 
         tvGeolocation.setOnDebouncedClickListener {
-
             viewModel.getPermissionGeolocation()
             rbChoice.radioC.isChecked = true
         }
@@ -88,7 +86,7 @@ class WeatherActivity : BaseActivity() {
             }
         }
 
-        tvSweepCity.click {
+        tvSweepCity.setOnDebouncedClickListener {
             navigateToChoiceCityDialog()
         }
     }

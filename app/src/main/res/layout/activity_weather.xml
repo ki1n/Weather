@@ -82,13 +82,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:alpha="0.6"
-        android:drawableStart="@drawable/ic_path_2"
         android:drawablePadding="8dp"
         android:text="@string/Моё_местоположение"
         app:layout_constraintBottom_toBottomOf="@+id/tvSweepCity"
         app:layout_constraintEnd_toEndOf="@+id/rbChoice"
         app:layout_constraintStart_toEndOf="@+id/tvSweepCity"
-        app:layout_constraintTop_toTopOf="@+id/tvSweepCity" />
+        app:layout_constraintTop_toTopOf="@+id/tvSweepCity"
+        app:drawableStartCompat="@drawable/ic_path_2" />
 
     <ImageView
         android:id="@+id/imvWeather"
@@ -127,7 +127,7 @@
         android:padding="4dp"
         android:textStyle="normal"
         android:fontFamily="@font/lato_light_90"
-        android:text="Дождь"
+        android:text="@string/дождь"
         android:textSize="25sp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/tvTemperature"
@@ -142,7 +142,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="4dp"
         android:alpha="0.6"
-        android:text="Ветер"
+        android:text="@string/ветер"
         app:layout_constraintEnd_toStartOf="@+id/tvPressure"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvSweepCity"
@@ -226,7 +226,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="не известно "
+        android:text="@string/нет_данных"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/tvProbability"
         app:layout_constraintTop_toBottomOf="@+id/tvProbability" />

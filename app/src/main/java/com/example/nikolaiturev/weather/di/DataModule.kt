@@ -2,10 +2,10 @@ package com.example.nikolaiturev.weather.di
 
 import com.example.nikolaiturev.weather.BuildConfig
 import com.example.nikolaiturev.weather.data.api.WeatherApi
+import com.example.nikolaiturev.weather.data.permissions.AndroidPermissionsService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import io.reactivex.schedulers.Schedulers
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -20,23 +20,8 @@ val dataModule = module {
         val logsInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY
         }
-        val headerInterceptor = Interceptor { chain ->
-            val builder = chain
-                .request()
-                .newBuilder()
-                .addHeader("Content-Type", "application/json")
-                .addHeader("Accept", "application/json")
-            /*.addHeader("Platform", "android")*/
-//            androidContext().userPreference.authToken.let {
-//                if (it.isNotEmpty()) {
-//                    builder.addHeader("Authorization", it)
-//                }
-//            }
-            chain.proceed(builder.build())
-        }
 
         OkHttpClient.Builder()
-           // .addInterceptor(headerInterceptor)
             .addInterceptor(logsInterceptor)
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
@@ -61,5 +46,8 @@ val dataModule = module {
             .build()
             .create(WeatherApi::class.java)
     }
+
+    single { AndroidPermissionsService() }
+
 }
 

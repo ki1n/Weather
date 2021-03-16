@@ -9,8 +9,8 @@
     <string name="mm.rt.ct">%1$s мм рт.ст.</string>
     <string name="percent">%1$s%%</string>
     <string name="Омск">Омск</string>
-    <string name="temperatureCelsius">%1$sº</string>
-    <string name="temperatureFaringates">%1$sF</string>
+    <string name="temperatureCelsius">%1$.0fº</string>
+    <string name="temperatureFaringates">%1$.0fF</string>
     <string name="hint_5mc">5 м/с, западный</string>
     <string name="hint_mm_rt_st">752 мм рт.ст.</string>
     <string name="moisture_percentage_count">60%</string>
@@ -18,5 +18,8 @@
     <string name="f">F</string>
     <string name="c">C</string>
     <string name="SearchCity">Поиск города</string>
+    <string name="дождь">Дождь</string>
+    <string name="ветер">Ветер</string>
+    <string name="нет_данных">нет данных</string>
 
 </resources>

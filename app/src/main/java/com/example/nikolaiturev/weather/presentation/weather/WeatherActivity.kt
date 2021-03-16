@@ -4,6 +4,7 @@ import com.bumptech.glide.Glide
 import com.example.nikolaiturev.weather.BuildConfig
 import com.example.nikolaiturev.weather.R
 import com.example.nikolaiturev.weather.data.permissions.AndroidPermissionsService
+import com.example.nikolaiturev.weather.domain.entity.Weather
 import com.example.nikolaiturev.weather.exstension.setOnDebouncedClickListener
 import com.example.nikolaiturev.weather.presentation.base.BaseActivity
 import com.example.nikolaiturev.weather.presentation.choice_city.ChoiceCityDialog
@@ -17,56 +18,24 @@ class WeatherActivity : BaseActivity() {
 
     override var layoutId: Int = R.layout.activity_weather
 
-    private val viewModel by viewModel<WeatherViewModel>()
+    override val viewModel by viewModel<WeatherViewModel>()
     private val androidPermissionsService: AndroidPermissionsService by inject()
 
     override fun iniView() {
-        bindingViewModel()
         androidPermissionsService.init(this)
+        viewModel.getPermissionGeolocation()
 
         tvGeolocation.setOnDebouncedClickListener {
-            viewModel.getPermissionGeolocation()
+            viewModel.getGeolocationMyCity()
             rbChoice.radioC.isChecked = true
         }
 
-        viewModel.getWeather("Moscow")
-
-        viewModel.weatherGeoLiveData.observe(this, { weatherGeo ->
-            with(weatherGeo) {
-                tvTemperature.text = getString(
-                    R.string.temperatureCelsius,
-                    String.format("%.1f", tempС).toFloat().roundToInt().toString()
-                )
-                tvCity.text = name
-                tvСlimate.text = description
-                tvWindTxt.text = getString(R.string.ms, speed.toString())
-                tvPressureTxt.text = getString(R.string.mm_rt_ct, pressure.toString())
-                tvHumidityTxt.text = getString(R.string.percent, humidity.toString())
-
-                Glide.with(imvWeather.context)
-                    .load(BuildConfig.ICON_URL + icon + "@2x.png")
-                    .error(R.drawable.ic_error_connect_icon)
-                    .into(imvWeather)
-            }
+        viewModel.weatherGeoLiveData.observe(this, { weather ->
+            bindWeather(weather)
         })
 
         viewModel.weatherLiveData.observe(this, { weather ->
-            with(weather) {
-                tvTemperature.text = getString(
-                    R.string.temperatureCelsius,
-                    String.format("%.1f", tempС).toFloat().roundToInt().toString()
-                )
-                tvCity.text = name
-                tvСlimate.text = description
-                tvWindTxt.text = getString(R.string.ms, speed.toString())
-                tvPressureTxt.text = getString(R.string.mm_rt_ct, pressure.toString())
-                tvHumidityTxt.text = getString(R.string.percent, humidity.toString())
-
-                Glide.with(imvWeather.context)
-                    .load(BuildConfig.ICON_URL + icon + "@2x.png")
-                    .error(R.drawable.ic_error_connect_icon)
-                    .into(imvWeather)
-            }
+            bindWeather(weather)
         })
 
         rbChoice.setOnCheckedChangeListener { _, checkedId ->
@@ -109,14 +78,23 @@ class WeatherActivity : BaseActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    private fun bindingViewModel() {
-        viewModel.isInProgress.observe(this, { isInProgress ->
-            if (isInProgress) {
-                showProgressDialog()
-            } else {
-                hideProgressDialog()
-            }
-        })
+    private fun bindWeather(weather: Weather) {
+        with(weather) {
+            tvTemperature.text = getString(
+                R.string.temperatureCelsius,
+                String.format("%.1f", tempС).toFloat().roundToInt().toString()
+            )
+            tvCity.text = name
+            tvСlimate.text = description
+            tvWindTxt.text = getString(R.string.ms, speed.toString())
+            tvPressureTxt.text = getString(R.string.mm_rt_ct, pressure.toString())
+            tvHumidityTxt.text = getString(R.string.percent, humidity.toString())
+
+            Glide.with(imvWeather.context)
+                .load(BuildConfig.ICON_URL + icon + "@2x.png")
+                .error(R.drawable.ic_error_connect_icon)
+                .into(imvWeather)
+        }
     }
 }
 

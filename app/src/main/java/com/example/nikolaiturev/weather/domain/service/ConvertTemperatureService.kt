@@ -1,6 +1,6 @@
 package com.example.nikolaiturev.weather.domain.service
 
-interface FahrenheitTemperatureService {
+interface ConvertTemperatureService {
 
     fun translateCelsius(value: String) : Int
 

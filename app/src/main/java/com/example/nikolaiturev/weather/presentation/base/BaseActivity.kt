@@ -14,21 +14,26 @@ abstract class BaseActivity : AppCompatActivity() {
     protected abstract fun iniView()
 
     private lateinit var progressDialog: Dialog
+    open val viewModel: BaseViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme)
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
         progressDialog()
+        bindViewModel()
         iniView()
     }
 
-    fun showProgressDialog() {
-        progressDialog.show()
-    }
+    private fun bindViewModel() {
 
-    fun hideProgressDialog() {
-        progressDialog.dismiss()
+        viewModel?.isInProgress?.observe(this, { isInProgress ->
+            if (isInProgress) {
+                progressDialog.show()
+            } else {
+                progressDialog.dismiss()
+            }
+        })
     }
 
     private fun progressDialog() {

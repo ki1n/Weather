@@ -14,20 +14,6 @@ class ChoiceCityViewModel(private val cityRepository: CityRepository) : BaseView
 
     val listCityFilter = MutableLiveData<City>()
 
-    @SuppressLint("CheckResult")
-    private fun getCityAll() {
-        cityRepository.getCity()
-            .doOnSubscribe { isInProgress.value = true }
-            .doFinally { isInProgress.value = false }
-            .subscribe(
-                {
-                    listCity.value = it
-                }, {
-                    postMessage(it.localizedMessage)
-                }
-            )
-    }
-
     init {
         getCityAll()
     }
@@ -40,5 +26,19 @@ class ChoiceCityViewModel(private val cityRepository: CityRepository) : BaseView
                 item.name.toLowerCase(Locale.ROOT).contains(filter.name)
             }
         }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun getCityAll() {
+        cityRepository.getCity()
+            .doOnSubscribe { isInProgress.value = true }
+            .doFinally { isInProgress.value = false }
+            .subscribe(
+                {
+                    listCity.value = it
+                }, {
+                    postMessage(it.localizedMessage)
+                }
+            )
     }
 }

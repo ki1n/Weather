@@ -9,7 +9,6 @@
     <string name="mm.rt.ct">%1$s мм рт.ст.</string>
     <string name="percent">%1$s%%</string>
     <string name="Омск">Омск</string>
-    <string name="current_weather_no_sign">%1$.01f%2$s</string>
     <string name="temperatureCelsius">%1$sº</string>
     <string name="temperatureFaringates">%1$sF</string>
     <string name="hint_5mc">5 м/с, западный</string>

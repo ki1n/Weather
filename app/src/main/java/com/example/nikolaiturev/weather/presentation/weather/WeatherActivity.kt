@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_weather.*
 import kotlinx.android.synthetic.main.activity_weather.view.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.math.roundToInt
 
 class WeatherActivity : BaseActivity() {
 
@@ -43,13 +42,13 @@ class WeatherActivity : BaseActivity() {
                 R.id.radioC -> {
                     tvTemperature.text = getString(
                         R.string.temperatureCelsius,
-                        viewModel.translateCelsius(tvTemperature.text.split("F")[0]).toString()
+                        viewModel.translateCelsius((tvTemperature.text.split("F")[0]).toDouble())
                     )
                 }
                 R.id.radioF -> {
                     tvTemperature.text = getString(
                         R.string.temperatureFaringates,
-                        viewModel.translateFahrenheit(tvTemperature.text.split("º")[0]).toString()
+                        viewModel.translateFahrenheit((tvTemperature.text.split("º")[0]).toDouble())
                     )
                 }
             }
@@ -81,8 +80,7 @@ class WeatherActivity : BaseActivity() {
     private fun bindWeather(weather: Weather) {
         with(weather) {
             tvTemperature.text = getString(
-                R.string.temperatureCelsius,
-                String.format("%.1f", tempС).toFloat().roundToInt().toString()
+                R.string.temperatureCelsius, tempС
             )
             tvCity.text = name
             tvСlimate.text = description

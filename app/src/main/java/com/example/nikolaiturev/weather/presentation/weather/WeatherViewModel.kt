@@ -19,13 +19,13 @@ class WeatherViewModel(
     val weatherGeoLiveData = MutableLiveData<Weather>()
     val weatherLiveData = MutableLiveData<Weather>()
 
-    fun translateCelsius(value: String): Int {
-        return fahrenheitTemperatureRepository.translateCelsius(value)
-    }
+    fun translateCelsius(temperature: Double): Double =
+        fahrenheitTemperatureRepository.translateCelsius(temperature)
 
-    fun translateFahrenheit(value: String): Int {
-        return fahrenheitTemperatureRepository.translateFahrenheit(value)
-    }
+
+    fun translateFahrenheit(temperature: Double): Double =
+        fahrenheitTemperatureRepository.translateFahrenheit(temperature)
+
 
     fun getGeolocationMyCity() {
         disposable {

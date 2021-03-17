@@ -45,6 +45,4 @@ abstract class BaseActivity : AppCompatActivity() {
             ColorDrawable(Color.TRANSPARENT)
         )
     }
-
-
 }

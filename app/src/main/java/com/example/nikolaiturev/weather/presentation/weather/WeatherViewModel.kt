@@ -22,7 +22,6 @@ class WeatherViewModel(
     fun translateCelsius(temperature: Double): Double =
         fahrenheitTemperatureRepository.translateCelsius(temperature)
 
-
     fun translateFahrenheit(temperature: Double): Double =
         fahrenheitTemperatureRepository.translateFahrenheit(temperature)
 

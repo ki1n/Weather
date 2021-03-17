@@ -15,7 +15,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ChoiceCityDialog(var onResult: ((String) -> Unit)? = null) : FixedBottomSheetFragment(R.layout.fragment_choice_city) {
 
     private val choiceWeatherAdapter: ChoiceCityAdapter by inject()
-
     private val viewModel by viewModel<ChoiceCityViewModel>()
 
     override fun getTheme(): Int = R.style.Theme_FullScreenDialog
